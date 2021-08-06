@@ -1,37 +1,17 @@
-/* See LICENSE file for copyright and license details. */
-
-/*
- * appearance
- *
- * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
- */
-static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
+static char *font = "JetBrainsMonoMedium Nerd Font:pixelsize=12:antialias=true:autohint=true";
 static int borderpx = 2;
+float alpha = 0.9;
 
-/*
- * What program is execed by st depends of these precedence rules:
- * 1: program passed with -e
- * 2: scroll and/or utmp
- * 3: SHELL environment variable
- * 4: value of shell in /etc/passwd
- * 5: value of shell in config.h
- */
 static char *shell = "/bin/sh";
 char *utmp = NULL;
-/* scroll program: to enable use a string like "scroll" */
 char *scroll = "scroll";
 char *stty_args = "stty raw pass8 nl -echo -iexten -cstopb 38400";
-
-/* identification sequence returned in DA and DECID */
 char *vtiden = "\033[?6c";
-
-/* Kerning / character bounding-box multipliers */
 static float cwscale = 1.0;
 static float chscale = 1.0;
 
 /*
  * word delimiter string
- *
  * More advanced example: L" `'\"()[]{}"
  */
 wchar_t *worddelimiters = L" ";
@@ -42,17 +22,7 @@ static unsigned int tripleclicktimeout = 600;
 
 /* alt screens */
 int allowaltscreen = 1;
-
-/* allow certain non-interactive (insecure) window operations such as:
-   setting the clipboard text */
 int allowwindowops = 0;
-
-/*
- * draw latency range in ms - from new content/keypress/etc until drawing.
- * within this range, st draws when content stops arriving (idle). mostly it's
- * near minlatency, but it waits longer for slow updates to avoid partial draw.
- * low minlatency will tear/flicker more, as it can "detect" idle too early.
- */
 static double minlatency = 8;
 static double maxlatency = 33;
 
@@ -93,37 +63,36 @@ char *termname = "st-256color";
  */
 unsigned int tabspaces = 8;
 
-/* bg opacity */
-float alpha = 0.8;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-	/* 8 normal colors */
-	"black",
-	"red3",
-	"green3",
-	"yellow3",
-	"blue2",
-	"magenta3",
-	"cyan3",
-	"gray90",
+    "#333333",
+    "#C4265E",
+    "#86B42B",
+    "#B3B42B",
+    "#6A7EC8",
+    "#8C6BC8",
+    "#56ADBC",
+    "#E3E3DD",
 
-	/* 8 bright colors */
-	"gray50",
-	"red",
-	"green",
-	"yellow",
-	"#5c5cff",
-	"magenta",
-	"cyan",
-	"white",
+    "#666666",
+    "#F92672",
+    "#A6E22E",
+    "#E2E22E",
+    "#819AFF",
+    "#AE81FF",
+    "#66D9EF",
+    "#F8F8F2",
 
 	[255] = 0,
 
 	/* more colors can be added after 255 to use with DefaultXX */
 	"#cccccc",
 	"#555555",
-	"black",
+	/* more colors can be added after 255 to use with DefaultXX */
+	"#1B1D1E", /* background */
+	"#1B1D1E", /* background */
+	"#F8F8F2", /* foreground */
 };
 
 
