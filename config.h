@@ -1,6 +1,6 @@
 static char *font = "JetBrainsMonoMedium Nerd Font:pixelsize=12:antialias=true:autohint=true";
 static int borderpx = 2;
-float alpha = 0.9;
+float alpha = .9;
 
 static char *shell = "/bin/sh";
 char *utmp = NULL;
@@ -38,6 +38,18 @@ static unsigned int blinktimeout = 800;
 static unsigned int cursorthickness = 2;
 
 /*
+ * 1: render most of the lines/blocks characters without using the font for
+ *    perfect alignment between cells (U2500 - U259F except dashes/diagonals).
+ *    Bold affects lines thickness if boxdraw_bold is not 0. Italic is ignored.
+ * 0: disable (render all U25XX glyphs normally from the font).
+ */
+const int boxdraw = 0;
+const int boxdraw_bold = 0;
+
+/* braille (U28XX):  1: render as adjacent "pixels",  0: use font */
+const int boxdraw_braille = 0;
+
+/*
  * bell volume. It must be a value between -100 and 100. Use 0 for disabling
  * it
  */
@@ -67,21 +79,21 @@ unsigned int tabspaces = 8;
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
     "#333333",
-    "#C4265E",
-    "#86B42B",
-    "#B3B42B",
-    "#6A7EC8",
-    "#8C6BC8",
-    "#56ADBC",
+    "#CC241D",
+    "#98971A",
+    "#D79921",
+    "#458588",
+    "#B16286",
+    "#689D6A",
     "#E3E3DD",
 
     "#666666",
-    "#F92672",
-    "#A6E22E",
-    "#E2E22E",
-    "#819AFF",
-    "#AE81FF",
-    "#66D9EF",
+    "#FB4934",
+    "#B8BB26",
+    "#FABD2F",
+    "#83A598",
+    "#D3869B",
+    "#8EC07C",
     "#F8F8F2",
 
 	[255] = 0,
