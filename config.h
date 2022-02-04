@@ -1,8 +1,13 @@
-static char *font = "JetBrainsMonoMedium Nerd Font:pixelsize=12:antialias=true:autohint=true";
-static int borderpx = 2;
-float alpha = .9;
+static char *font = "JetBrains Mono Medium Nerd Font:pixelsize=12:antialias=true:autohint=true";
+/* Spare fonts */
+static char *font2[] = {
+	"JetBrains Mono Medium Nerd Font:pixelsize=12:antialias=true:autohint=true"
+};
 
-static char *shell = "/bin/sh";
+static int borderpx = 2;
+float alpha = 0.9;
+
+static char *shell = "/bin/zsh";
 char *utmp = NULL;
 char *scroll = "scroll";
 char *stty_args = "stty raw pass8 nl -echo -iexten -cstopb 38400";
@@ -78,7 +83,7 @@ unsigned int tabspaces = 8;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-    "#333333",
+    "#1B1D1E",
     "#CC241D",
     "#98971A",
     "#D79921",
@@ -101,10 +106,6 @@ static const char *colorname[] = {
 	/* more colors can be added after 255 to use with DefaultXX */
 	"#cccccc",
 	"#555555",
-	/* more colors can be added after 255 to use with DefaultXX */
-	"#1B1D1E", /* background */
-	"#1B1D1E", /* background */
-	"#F8F8F2", /* foreground */
 };
 
 
@@ -113,7 +114,7 @@ static const char *colorname[] = {
  * foreground, background, cursor, reverse cursor
  */
 unsigned int defaultfg = 7;
-unsigned int defaultbg = 258;
+unsigned int defaultbg = 0;
 static unsigned int defaultcs = 256;
 static unsigned int defaultrcs = 257;
 
